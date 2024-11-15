@@ -1,0 +1,116 @@
+{% extends 'auth_basic.html' %}
+{% block title %}Login{% endblock title %}
+{% block body %}
+<div class="container-fluid g-0">
+    <section class="background-radial-gradient overflow-hidden position-relative" style="width: 100vw; height: 100vh;">
+        <div class="container text-lg-start position-absolute d-flex m-auto"
+            style="top: 0; bottom: 0; right: 0; left: 0;">
+            <div class="row gx-lg-5 align-items-center m-auto w-85">
+                <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                    <h1 id="informa" class="ls-tight mb-0 position-relative">
+                        Informa <span id="informaAI" class="position-absolute">AI</span>
+                    </h1>
+                    <h3 id="informaTagLine" class="mb-0">
+                        Software di valutazione sulla salute e medicina predittiva
+                    </h3>
+                </div>
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div id="authCardBody" class="card">
+                        <div id="loginSection" class="card-body px-4 py-5 px-md-5">
+                            <form class="mb-0" id="loginForm">
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="text" id="txtEmail" class="form-control formControlAI" name="txtEmail"
+                                        placeholder="Indirizzo email" required />
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="password" id="txtPsw" class="form-control formControlAI" name="txtPsw"
+                                        placeholder="Password" required />
+                                </div>
+                                <button type="submit" class="btn btnLogin w-100">
+                                    Login
+                                </button>
+                            </form>
+                            <div class="mt-4 text-center">
+                                <!-- <a href="{% url 'Register' %}" class="fs-6">Password dimenticata</a> -->
+                                <a onclick="showPswRecoveryDiv()" role="button">Password dimenticata</a>
+                                <div id="message" class="message" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div id="pswRecoverySection" class="card-body p-5">
+                            <p>
+                                Inserisci la tua email per ricevere nella casella di posta
+                                un codice per recuperare la password. Se l’indirizzo
+                                inserito non esiste nei nostri sistemi non riceverai nessun
+                                feedback in merito.
+                            </p>
+                            <form class="mb-0" id="pswRecoveryForm">
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="text" id="txtEmailPswRecovery" class="form-control formControlAI"
+                                        name="txtEmailPswRecovery" placeholder="Indirizzo email" required />
+                                </div>
+                                <button type="submit" class="btn btnLogin w-100">
+                                    Invia codice
+                                </button>
+                            </form>
+                            <div class="text-center">
+                                <div id="messagePswRecovery" class="message" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div id="codeEntrySection" class="card-body p-5">
+                            <p>
+                                Controlla la tua casella di posta elettronica, dovrebbe
+                                esserti arrivato un codice a sei cifre. Copialo e inseriscilo
+                                nelle caselle sottostanti
+                            </p>
+                            <form class="mb-0" id="codeEntryForm">
+                                <div class="d-flex mb-3 justify-content-center">
+                                    <input type="text" class="customInputBox" id="txtCode1" placeholder="0"
+                                        onkeyup="setFocus(event)">
+                                    <input type="text" class="customInputBox" id="txtCode2" placeholder="0"
+                                        onkeyup="setFocus(event)">
+                                    <input type="text" class="customInputBox" id="txtCode3" placeholder="0"
+                                        onkeyup="setFocus(event)">
+                                    <input type="text" class="customInputBox" id="txtCode4" placeholder="0"
+                                        onkeyup="setFocus(event)">
+                                    <input type="text" class="customInputBox" id="txtCode5" placeholder="0"
+                                        onkeyup="setFocus(event)">
+                                    <input type="text" class="customInputBox" id="txtCode6" placeholder="0"
+                                        onkeyup="setFocus(event)">
+                                </div>
+                                <button type="submit" class="btn btnLogin w-100">
+                                    Convalida codice
+                                </button>
+                            </form>
+                            <div class="text-start">
+                                <div id="messageCodeEntry" class="messageCode" style="display: none;"></div>
+                            </div>
+                        </div>
+                        <div id="newPswSection" class="card-body p-5">
+                            <form class="mb-0" id="newPswForm">
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="password" id="txtNewPsw" class="form-control formControlAI"
+                                        name="txtNewPsw" placeholder="Nuova password" required />
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="password" id="txtConfNewPsw" class="form-control formControlAI"
+                                        name="txtConfNewPsw" placeholder="Conferma password" required />
+                                </div>
+                                <button type="submit" class="btn btnLogin w-100">
+                                    Salva
+                                </button>
+                            </form>
+                            <div class="text-start">
+                                <div id="messageNewPsw" class="messageCode" style="display: none;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock body %}
+{% block js %}
+{% load static %}
+<script src="{% static 'js/auth.js' %}"></script>
+{% endblock js %}

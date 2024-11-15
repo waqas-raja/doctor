@@ -1,0 +1,14 @@
+.mainSidebarSection { -webkit-box-shadow: 0px 3.57px 40.21px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 3.57px 40.21px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 3.57px 40.21px 0px rgba(0,0,0,0.2); }
+.btn-site-primary, .btn-site-primary:hover { background-color: #FF6200; border: 1px solid #FF6200; padding: 12px; border-radius: 8px; color: #fff; font-family: 'Lato'; font-size: 20px;font-weight: 500; line-height: 24px; letter-spacing: 2px; text-align: center;}
+.middleRow ul, .bottomRow ul { list-style-type: none; padding: 0px; }
+.middleRow ul li, .bottomRow ul li { border-radius: 6px; background-color: #FFFFFF; color: #333333; padding: 12px; font-family: 'Lato'; font-size: 24px; font-weight: 400; line-height: 28.8px; text-align: left; cursor: pointer; }
+.middleRow ul li a, .bottomRow ul li a { color: #333333; text-decoration: none; }
+.middleRow ul { height: calC(100vh - 190px); overflow-y: auto; }
+.middleRow ul li:hover, .bottomRow ul li:hover { background-color: #85A5AD33; color: #333333; }
+.middleRow svg, .bottomRow svg { width: 24px; height: 19.2px; color: #000000; margin-right: 12px; }
+.bottomRow { max-height: 158px; position: absolute; bottom: 12px; }
+.activeLink { background-color: #85A5AD33 !important; color: #333333 !important; }
+#sidebarLinks li a { display: block; }
+

@@ -1,0 +1,23 @@
+body { font-family: 'Lato', sans-serif;}
+.pageHeading { font-size: 22px; font-weight: 400; line-height: 32px; text-align: left; color: #878787; }
+.genDataTable thead th, #patientMeasurementTable thead th { color: #2E95B1; font-size: 16px; font-weight: 700; line-height: 24px; text-align: center !important; }
+.genDataTable thead th:first-child, #patientMeasurementTable thead th:first-child { text-align: left !important; }
+.genDataTable tbody td, #patientMeasurementTable tbody td { color: #333333; text-align: center !important; font-size: 16px; font-weight: 400; line-height: 24px; }
+.genCardBody { height: calc(100vh - 155px); overflow-y: auto; }
+.genDataTable tbody td:first-child, #patientMeasurementTable tbody td:first-child { text-align: left !important; }
+.listRow { padding-bottom: 16px; padding-top: 16px; box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.05); }
+.textshadow { color: transparent !important; text-shadow: 0 0 7px rgba(0,0,0,0.5); }
+.btnPrimary, .btnPrimary:hover { background-color: #2E95B1; color: #FFF; font-size: 18px; font-weight: 700; line-height: 21.6px; border: 1px solid #EAEAEA; border-radius: 10px; height: 40px;}
+#ppgStat, #hegStat, #biaStat { width: 80px; height: 58px;}
+#ppgStat .card { border: 0.5px solid #000000; background-color: #FFE699; font-size: 10px; line-height: 12px; color: #FFFFFF; font-weight: 700; border-radius: 5px; }
+#ppgStat .card-header { background-color: #D9BD67; height: 13px; padding: 1px 0px 0px 0px; }
+#ppgStat .card-body { height: 27px; background-color: #D6CAA5; }
+#ppgStat .card-footer { background-color: #FFE699; color: #BFA964; padding: 0px; }
+#ppgStat .card-footer b { color: #634F11; font-size: 14; line-height: 16px; }
+#hegStat { border-radius: 8px; text-align: center; padding: 15px 0; background-color: #BDD7EE; font-size: 14px; line-height: 14px; font-weight: 700; color: #000000; }
+#biaStat { border-radius: 8px; background-color: #A9D08E; text-align: center; padding: 15px 0; font-size: 14px; line-height: 14px; font-weight: 700; color: #000000; }
+#simplePpgStat { border-radius: 8px; background-color: #FFE699; text-align: center; padding: 15px 0; font-size: 14px; line-height: 14px; font-weight: 700; color: #000000; }
+#measurementDetailSection .card { min-height: 285px; }
+.w-85 { width: 85% !important; }
+
+

@@ -1,0 +1,114 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+
+<div class="row position-relative mainNavbarSection p-4 align-items-center">
+    <div class="col-sm-3">
+        {% if page == 'Measurement Detail' or page == 'Measurement List' %} 
+        <div class="w-85" style="border-right: 3px solid black;">
+            <h3 class="heading mb-0">Ciao Claudio</h3>
+            <span class="headingTagLine d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#9F9F9F">
+                    <path
+                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
+                </svg>
+                24 Ottobre 2024
+            </span>
+        </div>
+        {% else %}
+            <h3 class="heading mb-0">Ciao Claudio</h3>
+            <span class="headingTagLine d-flex align-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#9F9F9F">
+                    <path
+                        d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6 .1 34zm192-34l-136-136c-9.4-9.4-24.6-9.4-33.9 0l-22.6 22.6c-9.4 9.4-9.4 24.6 0 33.9l96.4 96.4-96.4 96.4c-9.4 9.4-9.4 24.6 0 33.9l22.6 22.6c9.4 9.4 24.6 9.4 33.9 0l136-136c9.4-9.2 9.4-24.4 0-33.8z" />
+                </svg>
+                24 Ottobre 2024
+            </span>
+        {% endif %}
+    </div>
+    <!-- {{ measurement_view|length }} -->
+    {% if measurement_view|length == 0 %}
+    <div class="col-sm-6">
+        <div class="searchPatient">
+            <input type="text" class="form-control" id="txtSearchPatient" placeholder="Cerca">
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+    <div class="col-sm-1">
+        <svg id='eyeIconOpen' onclick="blurContentOfTable(event)" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512" style="cursor: pointer;">
+            <path
+                d="M572.5 241.4C518.3 135.6 410.9 64 288 64S57.7 135.6 3.5 241.4a32.4 32.4 0 0 0 0 29.2C57.7 376.4 165.1 448 288 448s230.3-71.6 284.5-177.4a32.4 32.4 0 0 0 0-29.2zM288 400a144 144 0 1 1 144-144 143.9 143.9 0 0 1 -144 144zm0-240a95.3 95.3 0 0 0 -25.3 3.8 47.9 47.9 0 0 1 -66.9 66.9A95.8 95.8 0 1 0 288 160z" />
+        </svg>
+        <svg id='eyeIconClose' onclick="blurContentOfTable(event)" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512" style="cursor: pointer; display: none;">
+            <path
+                d="M320 400c-75.9 0-137.3-58.7-142.9-133.1L72.2 185.8c-13.8 17.3-26.5 35.6-36.7 55.6a32.4 32.4 0 0 0 0 29.2C89.7 376.4 197.1 448 320 448c26.9 0 52.9-4 77.9-10.5L346 397.4a144.1 144.1 0 0 1 -26 2.6zm313.8 58.1l-110.6-85.4a331.3 331.3 0 0 0 81.3-102.1 32.4 32.4 0 0 0 0-29.2C550.3 135.6 442.9 64 320 64a308.2 308.2 0 0 0 -147.3 37.7L45.5 3.4A16 16 0 0 0 23 6.2L3.4 31.5A16 16 0 0 0 6.2 53.9l588.4 454.7a16 16 0 0 0 22.5-2.8l19.6-25.3a16 16 0 0 0 -2.8-22.5zm-183.7-142l-39.3-30.4A94.8 94.8 0 0 0 416 256a94.8 94.8 0 0 0 -121.3-92.2A47.7 47.7 0 0 1 304 192a46.6 46.6 0 0 1 -1.5 10l-73.6-56.9A142.3 142.3 0 0 1 320 112a143.9 143.9 0 0 1 144 144c0 21.6-5.3 41.8-13.9 60.1z" />
+        </svg>
+    </div>
+    {% elif page == 'Measurement List' %}
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-sm-5">
+                <div id="ppgStat" class="ppgStat">
+                    <div class="card text-center">
+                        <div class="card-header border-bottom-0">PPG</div>
+                        <div class="card-body p-0"></div>
+                        <div class="card-footer px-1 text-end border-top-0"><b>35</b>/100</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div id="hegStat">HEG<br>63/100</div>
+            </div>
+            <div class="col-sm-2">
+                <div id="biaStat">BIA<br>63/100</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <svg id='eyeIconOpen' onclick="blurContentOfTable(event)" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512" style="cursor: pointer;">
+            <path
+                d="M572.5 241.4C518.3 135.6 410.9 64 288 64S57.7 135.6 3.5 241.4a32.4 32.4 0 0 0 0 29.2C57.7 376.4 165.1 448 288 448s230.3-71.6 284.5-177.4a32.4 32.4 0 0 0 0-29.2zM288 400a144 144 0 1 1 144-144 143.9 143.9 0 0 1 -144 144zm0-240a95.3 95.3 0 0 0 -25.3 3.8 47.9 47.9 0 0 1 -66.9 66.9A95.8 95.8 0 1 0 288 160z" />
+        </svg>
+        <svg id='eyeIconClose' onclick="blurContentOfTable(event)" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512" style="cursor: pointer; display: none;">
+            <path
+                d="M320 400c-75.9 0-137.3-58.7-142.9-133.1L72.2 185.8c-13.8 17.3-26.5 35.6-36.7 55.6a32.4 32.4 0 0 0 0 29.2C89.7 376.4 197.1 448 320 448c26.9 0 52.9-4 77.9-10.5L346 397.4a144.1 144.1 0 0 1 -26 2.6zm313.8 58.1l-110.6-85.4a331.3 331.3 0 0 0 81.3-102.1 32.4 32.4 0 0 0 0-29.2C550.3 135.6 442.9 64 320 64a308.2 308.2 0 0 0 -147.3 37.7L45.5 3.4A16 16 0 0 0 23 6.2L3.4 31.5A16 16 0 0 0 6.2 53.9l588.4 454.7a16 16 0 0 0 22.5-2.8l19.6-25.3a16 16 0 0 0 -2.8-22.5zm-183.7-142l-39.3-30.4A94.8 94.8 0 0 0 416 256a94.8 94.8 0 0 0 -121.3-92.2A47.7 47.7 0 0 1 304 192a46.6 46.6 0 0 1 -1.5 10l-73.6-56.9A142.3 142.3 0 0 1 320 112a143.9 143.9 0 0 1 144 144c0 21.6-5.3 41.8-13.9 60.1z" />
+        </svg>
+    </div>
+    {% elif page == 'Measurement Detail' %}
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-sm-5 g-0">
+                <span class="headingTagLine d-flex align-items-center">
+                    Stai guardando le misure di
+                </span>
+                <h3 class="heading mb-0 text-capitalize">{{ patient_name }}</h3>
+            </div>
+            <div class="col-sm-2">
+                <div id="simplePpgStat">PPG<br>35/100</div>
+            </div>
+            <div class="col-sm-2">
+                <div id="hegStat">HEG<br>63/100</div>
+            </div>
+            <div class="col-sm-2">
+                <div id="biaStat">BIA<br>51/100</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <svg id='eyeIconOpen' onclick="blurContentOfTable(event)" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512" style="cursor: pointer;">
+            <path
+                d="M572.5 241.4C518.3 135.6 410.9 64 288 64S57.7 135.6 3.5 241.4a32.4 32.4 0 0 0 0 29.2C57.7 376.4 165.1 448 288 448s230.3-71.6 284.5-177.4a32.4 32.4 0 0 0 0-29.2zM288 400a144 144 0 1 1 144-144 143.9 143.9 0 0 1 -144 144zm0-240a95.3 95.3 0 0 0 -25.3 3.8 47.9 47.9 0 0 1 -66.9 66.9A95.8 95.8 0 1 0 288 160z" />
+        </svg>
+        <svg id='eyeIconClose' onclick="blurContentOfTable(event)" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 576 512" style="cursor: pointer; display: none;">
+            <path
+                d="M320 400c-75.9 0-137.3-58.7-142.9-133.1L72.2 185.8c-13.8 17.3-26.5 35.6-36.7 55.6a32.4 32.4 0 0 0 0 29.2C89.7 376.4 197.1 448 320 448c26.9 0 52.9-4 77.9-10.5L346 397.4a144.1 144.1 0 0 1 -26 2.6zm313.8 58.1l-110.6-85.4a331.3 331.3 0 0 0 81.3-102.1 32.4 32.4 0 0 0 0-29.2C550.3 135.6 442.9 64 320 64a308.2 308.2 0 0 0 -147.3 37.7L45.5 3.4A16 16 0 0 0 23 6.2L3.4 31.5A16 16 0 0 0 6.2 53.9l588.4 454.7a16 16 0 0 0 22.5-2.8l19.6-25.3a16 16 0 0 0 -2.8-22.5zm-183.7-142l-39.3-30.4A94.8 94.8 0 0 0 416 256a94.8 94.8 0 0 0 -121.3-92.2A47.7 47.7 0 0 1 304 192a46.6 46.6 0 0 1 -1.5 10l-73.6-56.9A142.3 142.3 0 0 1 320 112a143.9 143.9 0 0 1 144 144c0 21.6-5.3 41.8-13.9 60.1z" />
+        </svg>
+    </div>
+    {% endif %}
+
+</div>

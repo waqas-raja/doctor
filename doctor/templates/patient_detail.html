@@ -1,0 +1,486 @@
+{% extends 'dashboard_basic.html' %}
+{% block title %}Patient Detail Page{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+{% include 'sidebar.html' %}
+<div class="col-sm-9">
+    {% include 'navbar.html' %}
+    <div class="row listRow">
+        <div class="col-lg-12 mb-5 mb-lg-0 position-relative">
+            <div class="card">
+                <div class="card-body p-3 genCardBody">
+                    <div class="row mb-3">
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                <div class="card-body">
+                                    <h5 class="card-title text-capitalize text-center">{{ patientDetail.name }} {{ patientDetail.surname }}</h5>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Gender: {{ patientDetail.gender }}</li>
+                                    <li class="list-group-item">Email: {{ patientDetail.email }}</li>
+                                    <li class="list-group-item">Telephone: {{ patientDetail.telephone }}</li>
+                                    <li class="list-group-item">Internal Code: {{ patientDetail.internal_code }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <a href="{% url 'Patient' %}" class="fs-6 text-secondary">
+                                <button type="button" class="btn btn-primary">Go Back</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-lg-12 my-4">
+            <h1 class="mb-4 fs-4 fw-bold ls-tight" style="color: #2E95B1">
+                Add new measurements for
+                <span class="text-capitalize" style="color: #2E95B1">
+                    {{ patientDetail.name }}
+                </span>
+            </h1>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button id="btnShowMeasurementForm" class="accordion-button collapsed fw-bold" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false"
+                            aria-controls="flush-collapseOne">
+                            Create New Measurement
+                        </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <form class="mb-0" id="patientMeasurementForm">
+                                {% csrf_token %}
+                                !-- <div data-mdb-input-init class="form-outline mb-2">
+                                            <input type="datetime-local" id="txtDateTime" class="form-control"
+                                                name="txtDateTime" required />
+                                            <label class="form-label" for="txtDateTime">Date Time</label>
+                                        </div> --
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtWeight" class="form-control"
+                                                name="txtWeight" required />
+                                            <label class="form-label" for="txtWeight">Weight</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtHeight" class="form-control"
+                                                name="txtHeight" required />
+                                            <label class="form-label" for="txtHeight">Height</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="row">
+                                    <h4 class="mb-2 fs-4">ppg_stress_flow</h4>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtsdnn" class="form-control"
+                                                name="txtsdnn" />
+                                            <label class="form-label" for="txtsdnn">sdnn</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtrmssd" class="form-control"
+                                                name="txtrmssd" />
+                                            <label class="form-label" for="txtrmssd">rmssd</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtcrer" class="form-control"
+                                                name="txtcrer" />
+                                            <label class="form-label" for="txtcrer">c_rer</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtthmpw" class="form-control"
+                                                name="txtthmpw" />
+                                            <label class="form-label" for="txtthmpw">thm_pw</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtlf_vlf_le" class="form-control"
+                                                name="txtlf_vlf_le" />
+                                            <label class="form-label" for="txtlf_vlf_le">lf_vlf_le</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtlf_vlf_ri" class="form-control"
+                                                name="txtlf_vlf_ri" />
+                                            <label class="form-label" for="txtlf_vlf_ri">lf_vlf_ri</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtme_hr" class="form-control"
+                                                name="txtme_hr" />
+                                            <label class="form-label" for="txtme_hr">me_hr</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txthrv_min" class="form-control"
+                                                name="txthrv_min" />
+                                            <label class="form-label" for="txthrv_min">hrv_min</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txthrv_max" class="form-control"
+                                                name="txthrv_max" />
+                                            <label class="form-label" for="txthrv_max">hrv_max</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="row">
+                                    <h4 class="mb-2 fs-4">heg</h4>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtrcbo2" class="form-control"
+                                                name="txtrcbo2" />
+                                            <label class="form-label" for="txtrcbo2">rcbo2</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtsd" class="form-control" name="txtsd" />
+                                            <label class="form-label" for="txtsd">sd</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtslope" class="form-control"
+                                                name="txtslope" />
+                                            <label class="form-label" for="txtslope">slope</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtcbf_ratio" class="form-control"
+                                                name="txtcbf_ratio" />
+                                            <label class="form-label" for="txtcbf_ratio">cbf_ratio</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="row">
+                                    <h4 class="mb-2 fs-4">bia_acc_water</h4>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txttbw" class="form-control"
+                                                name="txttbw" />
+                                            <label class="form-label" for="txttbw">tbw</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtscam_to" class="form-control"
+                                                name="txtscam_to" />
+                                            <label class="form-label" for="txtscam_to">scam_to</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtecw" class="form-control"
+                                                name="txtecw" />
+                                            <label class="form-label" for="txtecw">ecw</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txticw" class="form-control"
+                                                name="txticw" />
+                                            <label class="form-label" for="txticw">icw</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="row">
+                                    <h4 class="mb-2 fs-4">bia_acc_soft_tissue_mineral</h4>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txttbk" class="form-control"
+                                                name="txttbk" />
+                                            <label class="form-label" for="txttbk">tbk</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txteck" class="form-control"
+                                                name="txteck" />
+                                            <label class="form-label" for="txteck">eck</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txttbna" class="form-control"
+                                                name="txttbna" />
+                                            <label class="form-label" for="txttbna">tbna</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txttbcl" class="form-control"
+                                                name="txttbcl" />
+                                            <label class="form-label" for="txttbcl">tbcl</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txto_pral" class="form-control"
+                                                name="txto_pral" />
+                                            <label class="form-label" for="txto_pral">o_pral</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="row">
+                                    <h4 class="mb-2 fs-4">bia_acc_proteins</h4>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txttbprot" class="form-control"
+                                                name="txttbprot" />
+                                            <label class="form-label" for="txttbprot">tbprot</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtbcmprot" class="form-control"
+                                                name="txtbcmprot" />
+                                            <label class="form-label" for="txtbcmprot">bcmprot</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtecfprot" class="form-control"
+                                                name="txtecfprot" />
+                                            <label class="form-label" for="txtecfprot">ecfprot</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtecmprot" class="form-control"
+                                                name="txtecmprot" />
+                                            <label class="form-label" for="txtecmprot">ecmprot</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtle" class="form-control" name="txtle" />
+                                            <label class="form-label" for="txtle">le</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtcr_24h" class="form-control"
+                                                name="txtcr_24h" />
+                                            <label class="form-label" for="txtcr_24h">cr_24h</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtstm" class="form-control"
+                                                name="txtstm" />
+                                            <label class="form-label" for="txtstm">stm</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtgly_free" class="form-control"
+                                                name="txtgly_free" />
+                                            <label class="form-label" for="txtgly_free">gly_free</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="row">
+                                    <h4 class="mb-2 fs-4">bia_acc_bone</h4>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtbo_dens" class="form-control"
+                                                name="txtbo_dens" />
+                                            <label class="form-label" for="txtbo_dens">bo_dens</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtbone" class="form-control"
+                                                name="txtbone" />
+                                            <label class="form-label" for="txtbone">bone</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtt_score" class="form-control"
+                                                name="txtt_score" />
+                                            <label class="form-label" for="txtt_score">t_score</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtbm" class="form-control" name="txtbm" />
+                                            <label class="form-label" for="txtbm">bm</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txttbca" class="form-control"
+                                                name="txttbca" />
+                                            <label class="form-label" for="txttbca">tbca</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtbbuffer" class="form-control"
+                                                name="txtbbuffer" />
+                                            <label class="form-label" for="txtbbuffer">bbuffer</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txttbmg" class="form-control"
+                                                name="txttbmg" />
+                                            <label class="form-label" for="txttbmg">tbmg</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txttbp" class="form-control"
+                                                name="txttbp" />
+                                            <label class="form-label" for="txttbp">tbp</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="row">
+                                    <h4 class="mb-2 fs-4">bia_acc_body_composition</h4>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtffm" class="form-control"
+                                                name="txtffm" />
+                                            <label class="form-label" for="txtffm">ffm</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtbrm" class="form-control"
+                                                name="txtbrm" />
+                                            <label class="form-label" for="txtbrm">brm</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtecm" class="form-control"
+                                                name="txtecm" />
+                                            <label class="form-label" for="txtecm">ecm</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txthpa_axir" class="form-control"
+                                                name="txthpa_axir" />
+                                            <label class="form-label" for="txthpa_axir">hpa_axir</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="my-1">
+                                <div class="row">
+                                    <h4 class="mb-2 fs-4">bia_acc_active_metabolic_mass</h4>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txts_score" class="form-control"
+                                                name="txts_score" />
+                                            <label class="form-label" for="txts_score">s_score</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtskel_m" class="form-control"
+                                                name="txtskel_m" />
+                                            <label class="form-label" for="txtskel_m">skel_m</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtfm" class="form-control" name="txtfm" />
+                                            <label class="form-label" for="txtfm">fm</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtimat" class="form-control"
+                                                name="txtimat" />
+                                            <label class="form-label" for="txtimat">imat</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtaat" class="form-control"
+                                                name="txtaat" />
+                                            <label class="form-label" for="txtaat">aat</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtmm_le" class="form-control"
+                                                name="txtmm_le" />
+                                            <label class="form-label" for="txtmm_le">le</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtgly" class="form-control"
+                                                name="txtgly" />
+                                            <label class="form-label" for="txtgly">gly</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" value="" id="txtvi_org" class="form-control"
+                                                name="txtvi_org" />
+                                            <label class="form-label" for="txtvi_org">vi_org</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button id="btnSaveMeasurementDetail" type="submit" class="btn btn-primary btn-block">
+                                    Save
+                                </button>
+                                <button id="btnEditMeasurementDetail" type="button" class="btn btn-primary btn-block"
+                                    onclick="savePatientMeasurementDetail()" style="display: none;">
+                                    Update
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+{% endblock body %}
+{% block js %}
+<script>
+    const patient = '{{ patientDetail }}';
+    const patient_id = '{{ patientDetail.id }}';
+    const patient_name = '{{ patientDetail.name }}' + ' ' + '{{ patientDetail.surname }}';
+    console.log(patient);
+</script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script src="{% static 'js/peopleDetail.js' %}"></script>
+{% endblock js %}

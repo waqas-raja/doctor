@@ -1,0 +1,29 @@
+{% extends 'dashboard_basic.html' %}
+{% block title %}Stats Page{% endblock title %}
+
+{% load static %}
+
+{% block body %}
+{% include 'sidebar.html' %}
+<div class="col-sm-9">
+    {% include 'navbar.html' %}
+    <div class="row listRow">
+        <div class="col-lg-12 mb-5 mb-lg-0 position-relative">
+            <div class="card">
+                <div class="card-body p-3 genCardBody">
+                    <div class="row mb-3">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+{% block js %}
+<script>
+</script>
+<script src="{% static 'js/dashboard.js' %}"></script>
+<script src="{% static 'js/stats.js' %}"></script>
+{% endblock js %}

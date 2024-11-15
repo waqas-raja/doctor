@@ -1,0 +1,86 @@
+{% extends 'auth_basic.html' %}
+{% block title %}Signup{% endblock title %}
+{% block body %}
+{% load static %}
+<div class="container-fluid g-0">
+    <section class="background-radial-gradient overflow-hidden">
+        <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+            <div class="row gx-lg-5 align-items-center mb-5">
+                <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+                    <h1 class="my-5 display-5 fw-bold ls-tight" style="color: #2E95B1">
+                        The best Doctor <br />
+                        <span style="color: #FF6200">for your health</span>
+                    </h1>
+                    <p class="mb-4 opacity-70" style="color: #333333">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                        Temporibus, expedita iusto veniam atque, magni tempora mollitia
+                        dolorum consequatur nulla, neque debitis eos reprehenderit quasi
+                        ab ipsum nisi dolorem modi. Quos?
+                    </p>
+                </div>
+                <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+                    <div class="card bg-glass">
+                        <div class="card-body px-4 py-5 px-md-5">
+                            <h3 class="text-center fs-3 fw-bold ls-tight">
+                                <span style="color: #2E95B1">Register</span>
+                            </h3>
+                            <form class="mb-0" action="" method="post" id="signUpForm">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" id="txtName" class="form-control"
+                                                name="txtName" required />
+                                            <label class="form-label" for="txtName">Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div data-mdb-input-init class="form-outline">
+                                            <input type="text" id="txtSurname" class="form-control" name="txtSurname"
+                                                required />
+                                            <label class="form-label" for="txtSurname">Surname</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="email" id="txtEmail" class="form-control" name="txtEmail" required />
+                                    <label class="form-label" for="txtEmail">Email</label>
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="password" id="txtPsw" class="form-control" name="txtPsw" required />
+                                    <label class="form-label" for="txtPsw">Password</label>
+                                </div>
+                                <div data-mdb-input-init class="form-outline mb-3">
+                                    <input type="password" id="txtConfPsw" class="form-control" name="txtConfPsw"
+                                        required />
+                                    <label class="form-label" for="txtConfPsw">Confirm Password</label>
+                                </div>
+                                {% if result.Error %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ result.Message }}
+                                </div>
+                                {% elif result.Message != '' %}
+                                <div class="alert alert-success" role="alert">
+                                    {{ result.Message }}
+                                </div>
+                                {% endif %}
+                                <button type="submit" data-mdb-button-init data-mdb-ripple-init
+                                    class="btn btn-primary btn-block">
+                                    Sign up
+                                </button>
+                            </form>
+                            <br>
+                            <a href="{% url 'Login' %}" class="fs-6 text-secondary">
+                                <i>I have already an account</i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock body %}
+{% block js %}
+<script src="{% static 'js/register.js' %}"></script>
+{% endblock js %}
